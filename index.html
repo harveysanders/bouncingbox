@@ -29,5 +29,15 @@
             <div class="box">0</div>
         </main>
     </body>
-    <script src="https://code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script>
+        (function() {
+            var update;
+            update = function() {
+                $('.box').css('left', 500*Math.random());
+                console.log(Math.random());
+            }
+            setInterval(update, 250);
+        }).call()
+    </script>
 </html>
