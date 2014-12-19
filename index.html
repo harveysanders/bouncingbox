@@ -32,12 +32,32 @@
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script>
         (function() {
-            var update;
+            var update, position, fullWidth, points, increasePoints, direction, speed;
+            position = 0;
+            fullWidth = $('main').width();
+            points = 0;
+            direction = 1;
+            speed = 10;
+            
             update = function() {
-                $('.box').css('left', 500*Math.random());
-                console.log(Math.random());
+                position = position + direction*speed;
+                if(position > fullWidth) {
+                    direction = -1;
+                }
+                if (position < 0) {
+                    direction = 1;
+                }
+                $('.box').css('left', position);
+                $('.box').text(points);
+                console.log(position);
+            };
+            
+            increasePoints = function() {
+               points += 1;
+                speed = speed + 5;
             }
-            setInterval(update, 250);
-        }).call()
+            setInterval(update, 80);
+            $('.box').on('mouseover', increasePoints);
+        }).call();
     </script>
 </html>
